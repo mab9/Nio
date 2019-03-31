@@ -13,6 +13,23 @@ public class Files {
 
     private static final int BUFFER = 1024;
 
+    public static void copyNioDirectBuffer(Path src, Path dest) throws IOException {
+
+        FileInputStream fin = new FileInputStream(src.toString());
+        FileOutputStream fout = new FileOutputStream(dest.toString());
+
+        FileChannel channelIn = fin.getChannel();
+        FileChannel channelOut = fout.getChannel();
+
+        ByteBuffer buffer = ByteBuffer.allocateDirect(BUFFER);
+
+        while (channelIn.read(buffer) >= 0) {
+            buffer.flip();
+
+            channelOut.write(buffer);
+            buffer.clear();
+        }
+    }
 
     public static void copyNio(Path src, Path dest) throws IOException {
 
