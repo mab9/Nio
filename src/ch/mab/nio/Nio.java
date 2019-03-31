@@ -6,6 +6,9 @@ import java.nio.file.Path;
 
 public class Nio {
 
+    /*
+       Test different file and buffer sizes. In example file sizes: 1Kb, 1Mb, 100Mb and the buffer sizes: 1Kb, 1Mb, 100Mb
+     */
     public static void main(String[] args) throws IOException {
 
         Path src = Path.of("/home/mab/Desktop/test/Jit.java");
